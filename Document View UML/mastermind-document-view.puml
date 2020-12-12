@@ -1,0 +1,72 @@
+@startuml
+
+title Mastermind Controler View
+
+
+
+
+package models {
+class Mastermind {
+- Game game
+- View view
+- play() : void
+{static} main() : void
+}
+Mastermind *--> Game
+class Game {
+- SecretCombination secretCombination
+- List<Attempt> attempts
++ addAttempt() : void
+- reset() :void
+- isResumed() : boolean
+}
+
+enum Message
+
+class Combination{
+- colorList ArrayList<Color>
+#compareCombination(Combination combination) : boolean
+}
+
+class SecretCombination{
+
+}
+
+Enum Color{
+RED
+BLUE
+YELLOW
+ORANGE
+PINK
+GREEN
++ toChar() : char
++ {static} valueOf(char character) : Color
++ {static} isValidColor(char character) : boolean
+}
+Attempt o--> ProposedCombination
+Attempt o--> SecretCombination
+
+}
+Mastermind *--> views.View
+models.Game --> SecretCombination
+Game --> Attempt
+
+
+
+
+SecretCombination -up-^ Combination
+ProposedCombination -up-^ Combination
+
+package views {
+View --> Game
+View --> GameView
+View *--> ProposedCombinationView
+View *--> SecretCombinationView
+View ..> IO
+View ..> Message
+ProposedCombinationView ..> IO
+SecretCombinationView ..> IO
+models.Game --> GameView
+
+}
+@enduml
