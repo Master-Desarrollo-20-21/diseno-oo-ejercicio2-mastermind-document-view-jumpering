@@ -1,6 +1,6 @@
 package mastermindDocumentView.models;
 
-enum Color {
+public enum Color {
     RED('r'),
     BLUE('b'),
     YELLOW('y'),
@@ -29,5 +29,9 @@ enum Color {
             return false;
         }
         return true;
+    }
+
+    public char getKeyword(){
+        return this.keyword;
     }
 }

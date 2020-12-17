@@ -10,24 +10,21 @@ public class Attempt {
     private final int BLACK_PIECES_FOR_WIN = 4;
 
     public Attempt(SecretCombination secretCombination) {
-       this.secretCombination = secretCombination;
+        this.secretCombination = secretCombination;
         this.piecesBlack = 0;
         this.piecesWhite = 0;
     }
 
-    public boolean isWinner(){
+    public boolean isWinner() {
         return this.piecesBlack == BLACK_PIECES_FOR_WIN;
     }
 
-    public void read(ProposedCombination proposedCombination){
+    public void read(ProposedCombination proposedCombination) {
+        assert proposedCombination != null;
         this.proposedCombination = proposedCombination;
         this.piecesBlack = secretCombination.getBlacks(this.proposedCombination);
         this.piecesWhite = secretCombination.getWhites(this.proposedCombination);
     }
-
-//    public String toString(){
-//        return this.proposedCombination.toString() + " --> " + this.piecesBlack + " blacks and " + this.piecesWhite + " whites";
-//    }
 
     public int getPiecesBlack() {
         return piecesBlack;
@@ -37,7 +34,7 @@ public class Attempt {
         return piecesWhite;
     }
 
-    public ProposedCombination getProposedCombination(){
+    public ProposedCombination getProposedCombination() {
         return this.proposedCombination;
     }
 }

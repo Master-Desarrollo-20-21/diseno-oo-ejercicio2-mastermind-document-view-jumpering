@@ -12,14 +12,18 @@ public abstract class Combination {
     }
 
     public boolean hasColor(Color color){
-
         return Arrays.stream(colors).anyMatch(color::equals);
     }
 
-    public int getCombinationLength(){
-        return COMBINATION_LENGTH;
+    public int getColorsLength(){
+        return this.colors.length;
     }
 
-    public abstract String toString();
+    public Color getColor(int colorNum){
+        return this.colors[colorNum];
+    }
 
+    public void setColor(int colorNum, Color color){
+        this.colors[colorNum] = color;
+    }
 }

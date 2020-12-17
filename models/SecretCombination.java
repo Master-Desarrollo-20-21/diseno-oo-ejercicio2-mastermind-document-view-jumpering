@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class SecretCombination extends Combination {
 
-    public SecretCombination(){
+    public SecretCombination() {
         super();
         this.generateRandom();
     }
@@ -21,17 +21,7 @@ public class SecretCombination extends Combination {
         } while (count < this.colors.length);
     }
 
-
-    @Override
-    public String toString() {
-        StringBuilder asterisks = new StringBuilder();
-        for (int i = 0; i < colors.length; i++) {
-            asterisks.append("x");
-        }
-        return asterisks.toString();
-    }
-
-    public int getBlacks( ProposedCombination proposedCombination ){
+    public int getBlacks(ProposedCombination proposedCombination) {
         int blacks = 0;
         for (int i = 0; i < this.colors.length; i++) {
             if (this.colors[i] == proposedCombination.colors[i]) {
@@ -51,3 +41,4 @@ public class SecretCombination extends Combination {
         return whites;
     }
 }
+

@@ -57,22 +57,4 @@ public class IO {
     public void printText(Object object){
         System.out.println(object);
     }
-
-    public enum Answer{
-        YES ('y'),
-        NO ('n');
-        private char value;
-        Answer(char value) {
-            this.value = value;
-        }
-
-        public static Answer valueOf(char character) {
-            for (Answer value : values()) {
-                if (value.value == character) {
-                    return value;
-                }
-            }
-            return null;
-        }
-    }
 }

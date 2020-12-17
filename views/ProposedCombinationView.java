@@ -1,6 +1,6 @@
 package mastermindDocumentView.views;
 
-import mastermindDocumentView.Color;
+import mastermindDocumentView.models.Color;
 import mastermindDocumentView.utils.IO;
 import mastermindDocumentView.models.Message;
 import mastermindDocumentView.models.ProposedCombination;
@@ -12,17 +12,13 @@ public class ProposedCombinationView {
 
     private String proposedInput;
 
-    public ProposedCombinationView(){
-        //read();
-    }
-
     public ProposedCombination read(){
         ProposedCombination proposedCombination = new ProposedCombination();
         do {
-            proposedInput = IO.getInstance().readText(Message.TEXT_PROPOSE.getText());
+            proposedInput = IO.getInstance().readText(Message.PROPOSE.getText());
         } while (!isValid());
-        for (int i = 0; i < proposedCombination.colors.length; i++) {
-            proposedCombination.colors[i] = Color.valueOf(proposedInput.charAt(i));
+        for (int i = 0; i < proposedCombination.getColorsLength(); i++) {
+            proposedCombination.setColor(i, Color.valueOf(proposedInput.charAt(i)));
         }
         return proposedCombination;
     }
@@ -34,7 +30,7 @@ public class ProposedCombinationView {
 
     private boolean isValidLength() {
         if (proposedInput.length() != 4) {
-            IO.getInstance().printText(Message.TEXT_WRONG_PROPOSE_LENGTH.getText());
+            IO.getInstance().printText(Message.WRONG_PROPOSE_LENGTH.getText());
             return false;
         }
         return true;
@@ -42,7 +38,7 @@ public class ProposedCombinationView {
 
     private boolean isValidColors() {
         if (proposedInput.chars().filter(c -> Color.isValidColor((char) c)).count() != 4) {
-            IO.getInstance().printText(Message.TEXT_WRONG_PROPOSE_COLORS.getText());
+            IO.getInstance().printText(Message.WRONG_PROPOSE_COLORS.getText());
             return false;
         }
         return true;
@@ -56,7 +52,7 @@ public class ProposedCombinationView {
             }
         }
         if (charSet.size() != 4) {
-            IO.getInstance().printText(Message.TEXT_WRONG_PROPOSE_REPEATED_COLORS.getText());
+            IO.getInstance().printText(Message.WRONG_PROPOSE_REPEATED_COLORS.getText());
             return false;
         }
         return true;

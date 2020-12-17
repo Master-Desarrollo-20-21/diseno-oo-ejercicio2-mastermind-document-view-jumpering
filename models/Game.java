@@ -6,12 +6,10 @@ import java.util.List;
 public class Game {
 
     private List<Attempt> attemptList;
-    private SecretCombination secretCombination;
     private static final int ATTEMPTS = 10;
 
     public Game(){
         this.attemptList = new ArrayList<>();
-        this.secretCombination = new SecretCombination();
     }
 
     public void addAttempt(Attempt attempt){
@@ -26,8 +24,23 @@ public class Game {
         return attemptList;
     }
 
-    public boolean finished() {
+    public Attempt getAttempt(int index){
+        return this.attemptList.get(index);
+    }
 
-        return true;
+    public boolean isFinished(){
+        return isWinner() || isLooser();
+    }
+
+    public boolean isWinner() {
+        return attemptList.get(attemptList.size()-1).isWinner();
+    }
+
+    public boolean isLooser(){
+        return attemptList.size() == ATTEMPTS;
+    }
+
+    public void resetAttemptList(){
+        this.getAttemptList().clear();
     }
 }
