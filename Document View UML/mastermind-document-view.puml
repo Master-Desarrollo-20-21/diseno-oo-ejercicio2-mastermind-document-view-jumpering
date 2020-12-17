@@ -2,36 +2,57 @@
 
 title Mastermind Controler View
 
-
-
-
-package models {
-class Mastermind {
-- Game game
-- View view
-- play() : void
-{static} main() : void
-}
-Mastermind *--> Game
-class Game {
-- SecretCombination secretCombination
-- List<Attempt> attempts
-+ addAttempt() : void
-- reset() :void
-- isResumed() : boolean
+class Mastermind{
+- game : Game
+- view : View
++ play() : void
+{static} main :void
 }
 
-enum Message
+Mastermind *--> models.Game
+Mastermind *--> views.console.View
+namespace views.console{
+class View{
+- gameView : GameView
+- resumeView : ResumeView
+- game : Game
+- reset : void
++ interact : void
 
-class Combination{
-- colorList ArrayList<Color>
-#compareCombination(Combination combination) : boolean
+}
+class GameView{
+- game : Game
+- attemptView : AttemptView
+- secretCombination : SecretCombination
++ interact() : void
+- writeNumOfAttempts() : void
+- writeSecretCombination : void
+- addAttempt() : void
+- writeAttempts() : void
++ writeResult() : void
+}
+class ResumeView{
++ interact() : void
+}
+class AttemptView{
+- game : Game
++ writeln(int attempts) : void
++ interact(SecretCombination secretCombination) : void
++{static} writeColors(Attempt addAttempt) : void
+}
+class SecretCombinationView{
+- secretCombination : SecretCombination
++ writeln() : void
++ getSecretCombination() : SecretCombination
+- writeColors() : void
+}
+View *--> GameView
+View ..> ResumeView
+GameView o--> AttemptView
+GameView *--> SecretCombinationView
 }
 
-class SecretCombination{
-
-}
-
+namespace models{
 Enum Color{
 RED
 BLUE
@@ -43,30 +64,31 @@ GREEN
 + {static} valueOf(char character) : Color
 + {static} isValidColor(char character) : boolean
 }
-Attempt o--> ProposedCombination
-Attempt o--> SecretCombination
-
+class Game{
+- attemptList : List<Attempt>
++ addAttempt : void
++ getNumOfAttempts : int
++ getAttemptList : List<Attempt>
++ isFinished : boolean
++ isWinner : boolean
++ isLooser : boolean
++ resetAttemptList : void
 }
-Mastermind *--> views.View
-models.Game --> SecretCombination
-Game --> Attempt
+Game o-->"0-10" Attempt
+Attempt *--> ProposedCombination
+Attempt *--> SecretCombination
+Combination <|-down- ProposedCombination
+Combination <|-down- SecretCombination
+Combination *-->"4" Color
+}
 
+namespace utils{
+views.console.View ..> IO
+views.console.GameView ..> IO
+views.console.ResumeView ..> IO
+views.console.SecretCombinationView ..> IO
+views.console.AttemptView ..> IO
 
-
-
-SecretCombination -up-^ Combination
-ProposedCombination -up-^ Combination
-
-package views {
-View --> Game
-View --> GameView
-View *--> ProposedCombinationView
-View *--> SecretCombinationView
-View ..> IO
-View ..> Message
-ProposedCombinationView ..> IO
-SecretCombinationView ..> IO
-models.Game --> GameView
 
 }
 @enduml
