@@ -68,7 +68,7 @@ class Game{
 - attemptList : List<Attempt>
 + addAttempt : void
 + getNumOfAttempts : int
-+ getAttemptList : List<Attempt>
++ getAttemptListSize : int
 + isFinished : boolean
 + isWinner : boolean
 + isLooser : boolean
