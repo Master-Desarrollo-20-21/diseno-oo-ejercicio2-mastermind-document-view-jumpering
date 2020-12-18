@@ -20,8 +20,8 @@ public class Game {
         return attemptList.size();
     }
 
-    public List<Attempt> getAttemptList() {
-        return attemptList;
+    public int getAttemptListSize(){
+        return this.attemptList.size();
     }
 
     public Attempt getAttempt(int index){
@@ -41,6 +41,6 @@ public class Game {
     }
 
     public void resetAttemptList(){
-        this.getAttemptList().clear();
+        this.attemptList.clear();
     }
 }

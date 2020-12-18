@@ -10,7 +10,8 @@ public enum Message {
     WIN("You've won!!! ;-)"),
     LOSSE("You've lost!!! :-("),
     SECRET_COMBINATION_CHARACTER("*"),
-    ATTEMPT(" Attempt(s):");
+    ATTEMPT(" Attempt(s):"),
+    BLACKS_AND_WHITES(" --> %s blacks and %s whites");
     private final String message;
 
     private Message(String message) {

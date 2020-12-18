@@ -10,6 +10,7 @@ public class Attempt {
     private final int BLACK_PIECES_FOR_WIN = 4;
 
     public Attempt(SecretCombination secretCombination) {
+        assert secretCombination != null : "secretCombination can't be null";
         this.secretCombination = secretCombination;
         this.piecesBlack = 0;
         this.piecesWhite = 0;
@@ -20,7 +21,7 @@ public class Attempt {
     }
 
     public void read(ProposedCombination proposedCombination) {
-        assert proposedCombination != null;
+        assert proposedCombination != null : "ProposedCombination can't be null";
         this.proposedCombination = proposedCombination;
         this.piecesBlack = secretCombination.getBlacks(this.proposedCombination);
         this.piecesWhite = secretCombination.getWhites(this.proposedCombination);

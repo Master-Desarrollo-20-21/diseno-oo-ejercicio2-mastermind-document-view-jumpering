@@ -12,6 +12,7 @@ public abstract class Combination {
     }
 
     public boolean hasColor(Color color){
+        assert color != null : "Color can't be null";
         return Arrays.stream(colors).anyMatch(color::equals);
     }
 

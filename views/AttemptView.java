@@ -27,16 +27,13 @@ public class AttemptView {
     }
 
     public static void writeColors(Attempt attempt) {
-        StringBuilder stringBuilder = new StringBuilder();
+        StringBuilder stringProposedCombination = new StringBuilder();
         for (int i = 0; i < attempt.getProposedCombination().getColorsLength(); i++) {
-            stringBuilder.append(attempt.getProposedCombination().getColor(i).getKeyword());
+            stringProposedCombination.append(attempt.getProposedCombination().getColor(i).getKeyword());
         }
-        IO.getInstance().printText(
-                stringBuilder
-                        + " --> "
-                        + attempt.getPiecesBlack()
-                        + " blacks and "
-                        + attempt.getPiecesWhite()
-                        + " whites");
+        String stringBlacksAndWhites = String.format(Message.BLACKS_AND_WHITES.toString(),
+                                                    attempt.getPiecesBlack(),
+                                                    attempt.getPiecesWhite());
+        IO.getInstance().printText(stringBlacksAndWhites);
     }
 }

@@ -37,7 +37,7 @@ public class GameView {
     }
 
     private void writeAttempts() {
-        for (int i = 0; i < this.game.getAttemptList().size(); i++) {
+        for (int i = 0; i < this.game.getAttemptListSize(); i++) {
             AttemptView.writeColors(this.game.getAttempt(i));
         }
     }
