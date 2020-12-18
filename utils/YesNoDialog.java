@@ -8,6 +8,5 @@ public class YesNoDialog {
             answerCharacter = input.charAt(0);
         } while (answerCharacter != 'y' && answerCharacter != 'n');
         return answerCharacter == 'y';
-
     }
 }

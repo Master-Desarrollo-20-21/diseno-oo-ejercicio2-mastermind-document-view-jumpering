@@ -1,7 +1,7 @@
 package mastermindDocumentView;
 
 import mastermindDocumentView.models.Game;
-import mastermindDocumentView.views.View;
+import mastermindDocumentView.views.console.View;
 
 public class Mastermind {
 
