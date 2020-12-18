@@ -2,15 +2,33 @@
 
 title Mastermind Controler View
 
-class Mastermind{
+class MastermindConsole{
 - game : Game
 - view : View
 + play() : void
 {static} main :void
 }
+MastermindConsole *--> models.Game
+MastermindConsole *--> views.console.View
+class MastermindGraphic{
+- game : Game
+- view : View
++ play() : void
+{static} main :void
+}
+MastermindGraphic *--> models.Game
+MastermindGraphic *--> views.graphic.View
 
-Mastermind *--> models.Game
-Mastermind *--> views.console.View
+
+namespace views.graphic{
+class View{
+- gameView : GameView
+- resumeView : ResumeView
+- game : Game
+- reset : void
++ interact : void
+}
+}
 namespace views.console{
 class View{
 - gameView : GameView
@@ -18,7 +36,6 @@ class View{
 - game : Game
 - reset : void
 + interact : void
-
 }
 class GameView{
 - game : Game
@@ -88,7 +105,7 @@ views.console.GameView ..> IO
 views.console.ResumeView ..> IO
 views.console.SecretCombinationView ..> IO
 views.console.AttemptView ..> IO
-
+views.console.ResumeView ..> YesNoDialog
 
 }
 @enduml
