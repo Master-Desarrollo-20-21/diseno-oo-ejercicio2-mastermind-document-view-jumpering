@@ -26,6 +26,7 @@ public class View {
                 gameView.interact();
             } while (!game.isFinished());
             gameView.writeResult();
-        } while (this.resumeView.interact());
+            resumeView.interact();
+        } while (this.resumeView.isResumed());
     }
 }
