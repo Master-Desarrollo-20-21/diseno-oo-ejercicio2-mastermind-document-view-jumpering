@@ -102,7 +102,6 @@ Combination *-->"4" Color
 namespace utils{
 views.console.View ..> IO
 views.console.GameView ..> IO
-views.console.ResumeView ..> IO
 views.console.SecretCombinationView ..> IO
 views.console.AttemptView ..> IO
 views.console.ResumeView ..> YesNoDialog
